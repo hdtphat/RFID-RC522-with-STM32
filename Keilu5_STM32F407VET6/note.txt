@@ -1,0 +1,36 @@
+
+CAU HINH XUNG CLOCK CHO HE THONG
+
+-	xem attachment_doc/clock.png de biet them ve so do xung clock cua AHB, APB1 va APB2
+-	tan so cua xung thach anh dau vao cho HSE: 8MHz
+-	cau hinh bo chia PLL:
+		+	PLL source mux -> bat sang HSE lam dau vao cua PLL
+		+	PLLM	(/M)	-> chia cho 4
+		+	PLLN	(*N)	-> nhan cho 168
+		+	PLLP	(/P)	-> chia cho 2
+-	cau hinh bo chia AHB prescaler
+		+ AHB prescaler -> chia cho 1
+-	cau hinh bo chia APB prescaler
+		+	APB1 prescaler -> chia cho 4 (APB toc do thap)
+		+	APB2 prescaler -> chia cho 2 (APB toc do cao)
+-	chinh cong tac System clock mux:
+		+	System clock mux -> bat sang PLLCLK lam dau vao cua system clock
+-	gia tri xung clock sau khi setup:
+		+	AHB = HCLK = 168MHz
+		+	PCLK1 = APB1 = 42MHz (max)
+		+	PCLK2 = APB1 = 84MHz (max)
+		
+========================================================================
+
+CAU HINH SPI1
+
+-	pin map:
+		+	SPI1_NSS			PA9
+		+	SPI1_SCLK			PA5	
+		+	SPI1_MISO			PA6	
+		+	SPI1_MOSI			PA7	
+-	cac thong so yeu cau cua slave de co the cau hinh SPI1:
+		+	CPOL va CPHA
+		+	tan so toi da (de setup Baudrate)
+		+	gui nhan MSB truoc hay LSB truoc
+		+	data frame 8bit hay 16bit
